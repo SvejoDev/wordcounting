@@ -25,16 +25,19 @@ def tokenize(lines):
     return words
 
 def countWords(words, stopWords):
-    counter = {}
+    frequencies = {}
     for word in words:
         if word not in stopWords:
-            if word not in counter:
-                counter[word] = 1
+            if word not in frequencies:
+                frequencies[word] = 1
             else:
-                counter[word] += 1
-    return counter and print(counter)
+                frequencies[word] += 1
+    return frequencies
 
-        
-        
-            
+def printTopMost(frequencies,n):
+    sort = dict(sorted(frequencies.items(), key = lambda item: item[1], reverse = True))
+    for word, count in sort.items():
+        print(word.ljust(20),str(count).rjust(5))
+
+
 
