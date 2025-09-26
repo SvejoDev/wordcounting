@@ -23,3 +23,18 @@ def tokenize(lines):
                 words.append(line[start])
                 start += 1
     return words
+
+def countWords(words, stopWords):
+    counter = {}
+    for word in words:
+        if word not in stopWords:
+            if word not in counter:
+                counter[word] = 1
+            else:
+                counter[word] += 1
+    return counter and print(counter)
+
+        
+        
+            
+
