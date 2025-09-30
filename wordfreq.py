@@ -35,9 +35,15 @@ def countWords(words, stopWords):
     return frequencies
 
 def printTopMost(frequencies,n):
-    sort = dict(sorted(frequencies.items(), key = lambda item: item[1], reverse = True))
-    for word, count in sort.items():
-        print(word.ljust(20),str(count).rjust(5))
+    sort_freq = dict(sorted(frequencies.items(), key = lambda item : item[1], reverse = True))
+    rows = []
+    for word, freq in list(sort_freq.items())[:n]:
+        rows.append(print(word.ljust(20) + str(freq).rjust(5)))
+    return rows
+    
+            
+        
+        
 
 
 

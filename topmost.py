@@ -1,6 +1,28 @@
-freq = {'word' : 9, 'words' : 2, 'wrong' : 4, "filipola" : 30}
+import wordfreq
+import sys
+import urllib.request
 
-sorterad = dict(sorted(freq.items(), key = lambda item: item[1], reverse = True))
+def main():
 
-for word, count in sorterad.items():
-    print(word.ljust(20),str(count).rjust(5))
+    inp_file = open(sys.argv[2], encoding='utf-8')
+
+    for line in inp_file:
+        striped_inp_lines = line.strip('\n')
+
+    inp_file.close()
+
+    eng_stop = open(sys.argv[1], encoding = 'utf-8')
+
+    for line in eng_stop:
+        striped_stop_lines = line.strip('\n')
+
+    eng_stop.close()
+
+    t = wordfreq.tokenize(striped_inp_lines)
+    c = wordfreq.countWords(t,striped_stop_lines)
+    wordfreq.printTopMost(c,int(sys.argv[3]))
+
+
+
+if __name__ == '__main__':
+    main()
